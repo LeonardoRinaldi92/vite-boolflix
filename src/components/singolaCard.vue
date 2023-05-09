@@ -28,6 +28,7 @@
 
 <style lang="scss" scoped>
     .boxcard {
+        margin-bottom: 5px;
         flex-basis: 10%;
         display: flex;
         align-items: center;
