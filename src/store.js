@@ -21,8 +21,8 @@ export const store = reactive (
         ArrayOnScreenTv: [],
         ArrayOnScreenSearched: [],
         textSearched: '',
-        urlBandiere : "https://www.unknown.nu/flags/images/"
-
+        urlBandiere : "https://www.unknown.nu/flags/images/",
+        isSearching: false,
     }   
  
 )

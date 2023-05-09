@@ -30,6 +30,7 @@
           .then( (res) =>{
               store.ArrayOnScreenTv = res.data.results
               console.log("TV", store.ArrayOnScreenTv)
+              console.log(store.pathAPI + store.pathDiscover + store.pathTV + store.pathKey + store.pathLanguage + store.pathPopularity + store.pathRegion + store.pathItaly)
           })
         }else {
           axios.get(store.pathAPI + store.pathSearch + store.pathMulti + store.pathKey +store.pathRicerca + store.textSearched + store.pathLanguage )

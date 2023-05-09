@@ -96,12 +96,12 @@
 <style lang="scss" scoped>
     @import "../style/partials/variable";
     .boxcard {
-        margin-bottom: 5px;
+        margin-bottom: 2px;
         flex-basis: 10%;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 5px;
+        padding: 2px;
         position: relative;
 
         &:hover .movietype {
@@ -113,9 +113,9 @@
 
         .movietype {
                 position: absolute;
-                top: 5px;
-                left: 5px;
-                font-size: 1rem;
+                top: 1px;
+                left: 1px;
+                font-size: 0.8rem;
                 color: white;
                 background-color: $red;
                 padding: 2px 6px;
@@ -128,10 +128,10 @@
         }
         .descrizione {
             position: absolute;
-            top: 5px;
-            left: 5px;
-            right: 5px;
-            bottom: 5px;
+            top: 1px;
+            left: 1px;
+            right: 1px;
+            bottom: 1px;
             background-color: rgba(0, 0, 0, 0.742);
             color: white;
             display: none;
@@ -141,7 +141,7 @@
                 p {
                     font-size: 0.8rem;
                     margin-top: 10px;
-                    line-height: 0.8rem;
+                    line-height: 0.7rem;
 
                 }
                 img {
