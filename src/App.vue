@@ -1,11 +1,13 @@
 <script >
 
     import searchbar from './components/searchbar.vue';
+    import thumb from './components/thumb.vue';
     
     export default {
       name: 'App',
       components: {
         searchbar,
+        thumb,
       }
     }
 
@@ -14,7 +16,7 @@
 <template>
   <main>
       <searchbar/>
-
+      <thumb/>
   </main>
 </template>
 
