@@ -19,39 +19,42 @@
 <template>
     <div class="box">
         <div class="lane">
-            <span class="titleCategory">
+            <P class="titleCategory">
                 Scopri le serie TV...
-            </span>
-            <div>
-               <singolaCard v-for="(element, index) in store.ArrayOnScreenTv" :array="element" />  
+            </P>
+            <div class="lineaInterna">
+               <singolaCard v-for="(element, index) in store.ArrayOnScreenTv" :elementoArray="element" />  
             </div>
         </div>
         <div class="lane">
-            <span class="titleCategory">
+            <P class="titleCategory">
                 Scopri i film...
-            </span>
-            <div>
-                <singolaCard v-for="(element, index) in store.ArrayOnScreenMovie" :array="element" />
+            </P>
+            <div class="lineaInterna">
+                <singolaCard v-for="(element, index) in store.ArrayOnScreenMovie" :elementoArray="element" />
             </div>
         </div>
     </div>
 </template>
 
-<style lang="scss" scooped>
+<style lang="scss" scoped>
     .box {
+        margin-top: 50px;
         height: 80vh;
         width: 100%;
         display: flex;
         flex-direction: column;
         .lane {
-            flex-basis: calc(100% / 3);
-            padding: 50px;
+            padding: 0px 50px 50px 50px;
             .titleCategory{
                 color: white;
                 font-size: 2rem;
                 text-transform: capitalize;
-                margin-bottom: 50px;
-
+                margin-bottom: 20px;
+            }
+            .lineaInterna {
+                display: flex;
+                flex-wrap: wrap;
             }
         }
 
