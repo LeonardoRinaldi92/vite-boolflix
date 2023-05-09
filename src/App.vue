@@ -1,9 +1,19 @@
 <script >
 
+    import searchbar from './components/searchbar.vue';
+    
+    export default {
+      name: 'App',
+      components: {
+        searchbar,
+      }
+    }
+
 </script>
 
 <template>
   <main>
+      <searchbar/>
 
   </main>
 </template>
