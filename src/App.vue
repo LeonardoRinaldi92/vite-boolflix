@@ -38,6 +38,7 @@
               store.ArrayOnScreenSearched = res.data.results
               console.log(store.ArrayOnScreenSearched)
           })
+          store.isSearched = true
 
         }
         }

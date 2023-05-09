@@ -113,8 +113,8 @@
 
         .movietype {
                 position: absolute;
-                top: 1px;
-                left: 1px;
+                top: 2px;
+                left: 2px;
                 font-size: 0.8rem;
                 color: white;
                 background-color: $red;
@@ -128,10 +128,10 @@
         }
         .descrizione {
             position: absolute;
-            top: 1px;
-            left: 1px;
-            right: 1px;
-            bottom: 1px;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
             background-color: rgba(0, 0, 0, 0.742);
             color: white;
             display: none;
