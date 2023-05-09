@@ -20,18 +20,18 @@
     <div class="box">
         <div class="lane">
             <P class="titleCategory">
-                Scopri le serie TV...
-            </P>
-            <div class="lineaInterna">
-               <singolaCard v-for="(element, index) in store.ArrayOnScreenTv" :elementoArray="element" />  
-            </div>
-        </div>
-        <div class="lane">
-            <P class="titleCategory">
                 Scopri i film...
             </P>
             <div class="lineaInterna">
                 <singolaCard v-for="(element, index) in store.ArrayOnScreenMovie" :elementoArray="element" />
+            </div>
+        </div>
+        <div class="lane">
+            <P class="titleCategory">
+                Scopri le serie TV...
+            </P>
+            <div class="lineaInterna">
+               <singolaCard v-for="(element, index) in store.ArrayOnScreenTv" :elementoArray="element" />  
             </div>
         </div>
     </div>
