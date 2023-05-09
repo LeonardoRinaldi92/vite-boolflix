@@ -1,22 +1,38 @@
 <script >
-
+        import axios from 'axios';
     import searchbar from './components/searchbar.vue';
-    import thumb from './components/thumb.vue';
+    import thumbBox from './components/thumbBox.vue';
     import { store } from './store';
     
     export default {
       name: 'App',
       data() {
-            return{
-                store,
-                textSearch : '',
-            }
-
-        },
+        return{
+          store,
+          textSearch : '',
+        }
+      },
       components: {
         searchbar,
-        thumb,
+        thumbBox,
       },
+      created() {
+        this.chiamtaApi()
+      },
+      methods: {
+        chiamtaApi(){
+          axios.get(store.pathAPI + store.pathDiscover + store.pathMovie + store.pathKey + store.pathLanguage)
+          .then( (res) =>{
+              store.arrayOnScreenMovie = res.data.results
+              console.log (store.arrayOnScreenMovies)
+          })
+          axios.get(store.pathAPI + store.pathDiscover + store.pathTV + store.pathKey + store.pathLanguage)
+          .then( (res) =>{
+              store.arrayOnScreenTV = res.data.results
+              console.log (store.arrayOnScreenTV )
+          })
+        }
+      },  
     }
 
 </script>
@@ -24,7 +40,7 @@
 <template>
   <main>
       <searchbar/>
-      <thumb/>
+      <thumbBox/>
   </main>
 </template>
 
