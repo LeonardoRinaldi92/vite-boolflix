@@ -23,13 +23,14 @@
         chiamtaApi(){
           axios.get(store.pathAPI + store.pathDiscover + store.pathMovie + store.pathKey + store.pathLanguage)
           .then( (res) =>{
-              store.arrayOnScreenMovie = res.data.results
-              console.log (store.arrayOnScreenMovies)
+              store.ArrayOnScreenMovie = res.data.results
+              console.log("movie", store.ArrayOnScreenMovie)
           })
           axios.get(store.pathAPI + store.pathDiscover + store.pathTV + store.pathKey + store.pathLanguage)
           .then( (res) =>{
-              store.arrayOnScreenTV = res.data.results
-              console.log (store.arrayOnScreenTV )
+              store.ArrayOnScreenTv = res.data.results
+              console.log("TV", store.ArrayOnScreenTv)
+
           })
         }
       },  

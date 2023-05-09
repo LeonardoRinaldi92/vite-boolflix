@@ -1,8 +1,12 @@
 <script>
     import {store} from '../store';
+    import singolaCard from './singolaCard.vue';
 
     export default {
         name: 'thumbBox',
+        components: {
+            singolaCard,
+        },
         data(){
             return {
                 store
@@ -19,13 +23,16 @@
                 Scopri le serie TV...
             </span>
             <div>
-                
+               <singolaCard v-for="(element, index) in store.ArrayOnScreenTv" :array="element" />  
             </div>
         </div>
         <div class="lane">
             <span class="titleCategory">
                 Scopri i film...
             </span>
+            <div>
+                <singolaCard v-for="(element, index) in store.ArrayOnScreenMovie" :array="element" />
+            </div>
         </div>
     </div>
 </template>
