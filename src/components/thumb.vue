@@ -10,7 +10,7 @@
             }
         },
         created() {
-            this.chiamataApi()
+            this.chiamtaApi()
         },
         methods: {
             chiamtaApi(){
