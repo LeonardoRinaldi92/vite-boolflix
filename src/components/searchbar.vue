@@ -16,10 +16,10 @@
     <div>
         <div class="logo">
             <img src="https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png" alt="">
-            
+
         </div>
         <div class="search" >
-            <input type="text" placeholder="Cerca qui..." v-model="store.textSearched"  @change="$emit('chiamataApi')">
+            <input type="text" placeholder="Cerca qui..." v-model="store.textSearched"  @change="$emit('ricerca')">
 
         </div>
 

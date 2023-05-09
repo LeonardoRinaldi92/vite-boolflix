@@ -12,7 +12,13 @@
 </script>
 
 <template>
-    <div class="boxcard">
+    <div v-if="elementoArray.poster_path" class="boxcard">
+        <div v-if="elementoArray.media_type && elementoArray.media_type == 'movie' " class="movietype">
+            FILM
+        </div>
+        <div v-else-if="elementoArray.media_type && elementoArray.media_type == 'tv' " class="movietype">
+            SERIE
+        </div>
         <img :src="store.pathImageBig+elementoArray.poster_path" alt="">
         <div class="descrizione">
             <div>
@@ -32,7 +38,7 @@
                     <b>TITOLO ORIGINALE:</b> <br>
                     {{ elementoArray.original_title }}
                 </p>
-                <p>
+                <p v-if="elementoArray.original_language">
                     <b>LINGUA ORIGINALE:</b>
                     <img :src="store.urlBandiere+elementoArray.original_language+-100" alt="">
                 </p>     
@@ -45,7 +51,7 @@
                         <span style="color: gold;">&#9733;</span>
                         <span style="color: gold;">&#9733;</span>
                     </span>
-                    <span v-else-if="elementoArray.vote_average > 6">
+                   <span v-else-if="elementoArray.vote_average > 6">
                         <span style="color: gold;">&#9733;</span>
                         <span style="color: gold;">&#9733;</span>
                         <span style="color: gold;">&#9733;</span>
@@ -82,16 +88,13 @@
                         <span>&#9733;</span>
                     </span>
                 </p>
-                
-
-            </div>
-            
+            </div>   
         </div>
-
     </div>
 </template>
 
 <style lang="scss" scoped>
+    @import "../style/partials/variable";
     .boxcard {
         margin-bottom: 5px;
         flex-basis: 10%;
@@ -100,9 +103,24 @@
         justify-content: center;
         padding: 5px;
         position: relative;
+
+        &:hover .movietype {
+            display: none;
+        }
         &:hover .descrizione{
             display: block;
         }
+
+        .movietype {
+                position: absolute;
+                top: 5px;
+                left: 5px;
+                font-size: 1rem;
+                color: white;
+                background-color: $red;
+                padding: 2px 6px;
+                display: block;
+            }
 
         img {
             width:100%;

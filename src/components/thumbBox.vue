@@ -18,20 +18,28 @@
 
 <template>
     <div class="box">
-        <div class="lane">
-            <P class="titleCategory">
+        <div v-if="store.textSearched == '' " class="lane">
+            <p class="titleCategory">
                 Scopri i film...
-            </P>
+            </p>
             <div class="lineaInterna">
                 <singolaCard v-for="(element, index) in store.ArrayOnScreenMovie" :elementoArray="element" />
             </div>
         </div>
-        <div class="lane">
-            <P class="titleCategory">
+        <div v-if="store.textSearched == ''" class="lane">
+            <p class="titleCategory">
                 Scopri le serie TV...
-            </P>
+            </p>
             <div class="lineaInterna">
                <singolaCard v-for="(element, index) in store.ArrayOnScreenTv" :elementoArray="element" />  
+            </div>
+        </div>
+        <div v-if="store.textSearched !== '' " class="lane">
+            <p class="titleCategory">
+                Hai cercato: {{ store.textSearched }}
+            </p>
+            <div class="lineaInterna">
+               <singolaCard v-for="(element, index) in store.ArrayOnScreenSearched" :elementoArray="element" />  
             </div>
         </div>
     </div>

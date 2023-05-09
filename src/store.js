@@ -5,7 +5,7 @@ export const store = reactive (
         pathAPI : 'https://api.themoviedb.org/3/',
         pathSearch : 'search/',
         pathDiscover : 'discover/',
-        pathMulti : 'multi/',
+        pathMulti : 'multi?',
         pathMovie : 'movie?',
         pathTV: 'tv?',
         pathKey : 'api_key=553a5f7d4578dcd45e775fe2ac050910',

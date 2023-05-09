@@ -9,7 +9,6 @@
       data() {
         return{
           store,
-          textSearch : '',
         }
       },
       components: {
@@ -21,6 +20,7 @@
       },
       methods: {
         chiamtaApi(){
+          if(store.textSearched == ''){
           axios.get(store.pathAPI + store.pathDiscover + store.pathMovie + store.pathKey + store.pathLanguage + store.pathPopularity + store.pathRegion + store.pathItaly)
           .then( (res) =>{
               store.ArrayOnScreenMovie = res.data.results
@@ -30,9 +30,15 @@
           .then( (res) =>{
               store.ArrayOnScreenTv = res.data.results
               console.log("TV", store.ArrayOnScreenTv)
-              console.log (store.pathAPI + store.pathDiscover + store.pathTV + store.pathKey + store.pathLanguage + store.pathPopularity)
-
           })
+        }else {
+          axios.get(store.pathAPI + store.pathSearch + store.pathMulti + store.pathKey +store.pathRicerca + store.textSearched + store.pathLanguage )
+          .then( (res) =>{
+              store.ArrayOnScreenSearched = res.data.results
+              console.log(store.ArrayOnScreenSearched)
+          })
+
+        }
         }
       },  
     }
@@ -41,7 +47,7 @@
 
 <template>
   <main>
-      <searchbar/>
+      <searchbar @ricerca="chiamtaApi()"/>
       <thumbBox/>
   </main>
 </template>
