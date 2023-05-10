@@ -17,8 +17,10 @@
                     store.serie = false
                     store.film = false
                     store.textSearched = ''
+                    store.idFilm = ''
                 }else{
                     store.textSearched = ''
+                    store.idFilm = ''
                 }
             },
             GoSerie(){
@@ -28,8 +30,10 @@
                     store.home = false
                     store.film = false
                     store.textSearched = ''
+                    store.idFilm = ''
                 }else{
                     store.textSearched = ''
+                    store.idFilm = ''
                 }
 
                 this.chiamataGeneriTv();
@@ -41,15 +45,17 @@
                     store.home = false
                     store.serie = false
                     store.textSearched = ''
+                    store.idFilm = ''
                 }else{
                     store.textSearched = ''
+                    store.idFilm = ''
                 }
                 this.chiamataGeneriFilm();
             },
             chiamataGeneriFilm(){
                 if(!store.ArrayFilmConGeneri.length) {
                     store.ArrayGeneriFilm.forEach(element => {
-                        axios.get(store.pathAPI + store.pathDiscover + store.pathMovie + store.pathKey + store.pathLanguage  + store.pathGeneri + element.id)
+                        axios.get(store.pathAPI + store.pathDiscover + store.pathMovie + store.pathKey + store.pathLanguage + store.pathPopularity + store.pathGeneri + element.id)
                         .then( (res)=> {
                         store.ArrayFilmConGeneri.push(res.data.results)
                         })
@@ -59,7 +65,7 @@
             chiamataGeneriTv(){
                 if(!store.ArrayTvConGeneri.length) {
                     store.ArrayGeneriTv.forEach(element => {
-                        axios.get(store.pathAPI + store.pathDiscover + store.pathTV + store.pathKey + store.pathLanguage  + store.pathGeneri + element.id)
+                        axios.get(store.pathAPI + store.pathDiscover + store.pathTV + store.pathKey + store.pathLanguage + store.pathPopularity + store.pathGeneri + element.id)
                         .then( (res)=> {
                         store.ArrayTvConGeneri.push(res.data.results)
                         })
@@ -91,7 +97,7 @@
             <span v-if="!store.search" @click="store.search = true">
                 cerca
             </span>
-            <input v-if="store.search" type="text" placeholder="Cerca qui..." v-model="store.textSearched"  @change="$emit('ricerca')">
+            <input v-if="store.search" type="text" placeholder="Cerca qui..." v-model="store.textSearched"  @change="$emit('ricerca');store.idFilm = ''">
         </div>
     </div>
 </template>

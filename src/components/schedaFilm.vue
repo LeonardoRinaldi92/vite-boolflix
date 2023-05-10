@@ -14,7 +14,11 @@
                 .then ( (res) => {
                     store.elementOnScreen =  res.data
                 })
-                console.log(store.elementOnScreen)
+                axios.get(store.pathAPI + store.pathMovieScheda + store.idFilm + "/casts?" + store.pathKey )
+                .then ( (res) => {
+                    store.actorsOnScreen = res.data
+                    console.log(store.actorsOnScreen)
+                })
             },
             
         },
@@ -34,7 +38,7 @@
                         <h1>
                             {{ store.elementOnScreen.title }}
                         </h1>
-                        <h3 class="tagline">
+                        <h3 v-if="store.elementOnScreen.tagline" class="tagline">
                             <i>"{{ store.elementOnScreen.tagline }}"</i>
                         </h3>
                         <h3>
@@ -51,12 +55,19 @@
                         </h3>
                         <div>
                             <span v-for="(element, index) in store.elementOnScreen.genres" class="generi">
-                            {{ element.name }}
-                        </span>
+                                {{ element.name }}
+                            </span>
                         </div>
-                        
-                    </div>
-                    <div>
+                        <h3>
+                            Cast:
+                        </h3>
+                        <div class="cast">
+                            <span v-for="index in 5" :key="index">
+                                {{ store.actorsOnScreen.cast[index].name }} 
+                                <i>nel ruolo di:</i> 
+                                {{ store.actorsOnScreen.cast[index].character }}
+                            </span>
+                        </div>
                         
                     </div>
                 </div>
@@ -72,7 +83,7 @@
     .containerScheda{
         background-color: rgba(0, 0, 0, 0.192);
         width: 100%;
-        z-index: 9999;
+        z-index: 100;
         position: absolute;
         .boxDescription {
             width: 100%;
@@ -112,10 +123,10 @@
                         }
                         p,
                         h3 {
-                            margin-top: 2rem;
+                            margin-top: 1rem;
                             color: white;
                             margin-left: 50px;
-                            font-size: 1.4rem;
+                            font-size: 1rem;
                             text-shadow: -0.5px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
                         }
                         div {
@@ -123,9 +134,16 @@
                             span {
                                 margin-right: 20px;
                                 color: white;
+                                text-shadow: -0.5px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
                             }
                             
                         }
+                        .cast {
+                            span {
+                                display:block;
+                            }
+                        }
+                        
                     }
                 }
             }
