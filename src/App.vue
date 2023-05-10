@@ -33,12 +33,15 @@
               console.log(store.pathAPI + store.pathDiscover + store.pathTV + store.pathKey + store.pathLanguage + store.pathPopularity + store.pathRegion + store.pathItaly)
           })
         }else {
+          store.home = false
+          store.serie = false
+          store.film = false
           axios.get(store.pathAPI + store.pathSearch + store.pathMulti + store.pathKey +store.pathRicerca + store.textSearched + store.pathLanguage )
           .then( (res) =>{
               store.ArrayOnScreenSearched = res.data.results
               console.log(store.ArrayOnScreenSearched)
+
           })
-          store.isSearched = true
 
         }
         }
