@@ -1,4 +1,5 @@
 <script>
+    import axios from 'axios';
     import {store} from '../store';
     export default {
         name: 'searchbar',
@@ -32,6 +33,18 @@
                     store.film = true
                     store.home = false
                     store.serie = false
+                }
+
+                this.chiamataGeneri();
+            },
+            chiamataGeneri(){
+                if(!store.ArrayFilmConGeneri.length) {
+                    store.ArrayGeneriFilm.forEach(element => {
+                        axios.get(store.pathAPI + store.pathDiscover + store.pathMovie + store.pathKey + store.pathLanguage  + store.pathGeneri + element.id)
+                        .then( (res)=> {
+                        store.ArrayFilmConGeneri.push(res.data.results)
+                        })
+                    });   
                 }
             }
 

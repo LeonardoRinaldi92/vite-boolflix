@@ -23,6 +23,7 @@ export const store = reactive (
         ArrayOnScreenSearched: [],
         ArrayGeneriFilm: [],
         ArrayGeneriTv: [],
+        ArrayFilmConGeneri : [],
         textSearched: '',
         urlBandiere : "https://www.unknown.nu/flags/images/",
         isSearched: false,

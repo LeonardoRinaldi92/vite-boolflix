@@ -50,7 +50,6 @@
               store.ArrayGeneriFilm = res.data.genres
               console.log("generi FILM",store.ArrayGeneriFilm)
             })
-            
         },
         chiamataGeneriTv(){
             axios.get(store.pathChiamataGeneriTv).then ( (res)=>{
