@@ -39,7 +39,7 @@
                     {{ elementoArray.original_title }}
                 </p>
                 <p v-if="elementoArray.original_language">
-                    <b>LINGUA ORIGINALE:</b>
+                    <p>LINGUA ORIGINALE:</p>
                     <img :src="store.urlBandiere+elementoArray.original_language+-100" alt="">
                 </p>     
                 <p class="voto">
@@ -135,18 +135,18 @@
             background-color: rgba(0, 0, 0, 0.742);
             color: white;
             display: none;
+            overflow: hidden;
             div {
                 width: 80%;
                 margin: 0 auto;
                 p {
                     font-size: 0.8rem;
                     margin-top: 10px;
-                    line-height: 0.7rem;
+                    line-height: 0.6rem;
 
                 }
                 img {
-                    width: 30px;
-                    margin-top: 5px;
+                    width: 30px;;
                 }
                 
             }

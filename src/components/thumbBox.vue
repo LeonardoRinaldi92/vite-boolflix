@@ -42,6 +42,15 @@
                <singolaCard v-for="(element, index) in store.ArrayOnScreenSearched" :elementoArray="element" />  
             </div>
         </div>
+        <div v-for="(element,index) in store.ArrayGeneriFilm" :key="index"
+        v-if="store.textSearched == '' && store.home " class="lane">
+            <p class="titleCategory">
+                Scopri i film...
+            </p>
+            <div class="lineaInterna">
+                <singolaCard v-for="(element, index) in store.ArrayOnScreenMovie" :elementoArray="element" />
+            </div>
+        </div>
         
     </div>
 </template>

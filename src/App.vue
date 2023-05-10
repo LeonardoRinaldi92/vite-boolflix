@@ -46,35 +46,20 @@
         }
         },
         chiamataGeneriFilm(){
-          if (store.film){
             axios.get(store.pathChiamataGeneriFilm).then ( (res)=>{
               store.ArrayGeneriFilm = res.data.genres
-              console.log(store.ArrayGeneriFilm)
-            })
-          }
-        },
-        chiamataGeneriTv(){
-          if (store.film){
-            axios.get(store.pathChiamataGeneriFilm).then ( (res)=>{
-              store.ArrayGeneriTv = res.data.genres
-              console.log(store.ArrayGeneriTv)
-            })
-          }
-        },
-        chiamataFilm(){
-          store.ArrayGeneriFilm.forEach(element => {
-            let ArrayFilm + element.name
-            store.push(`ArrayFilm${element.name}`)
-
-            axios.get(store.pathAPI + store.pathDiscover + store.pathKey + store.pathLanguage + store.pathPopularity + store.pathGeneri + element.id).then 
-            ( (res)=> {
-              store.push(`ArrayFilm${element.name}`)
-              `store.ArrayFilm${element.name}`= []
+              console.log("generi FILM",store.ArrayGeneriFilm)
             })
             
-          });
-        }
-        
+        },
+        chiamataGeneriTv(){
+            axios.get(store.pathChiamataGeneriTv).then ( (res)=>{
+              store.ArrayGeneriTv = res.data.genres
+              console.log("generi TV",store.ArrayGeneriTv)
+            })
+
+        },
+    
       },  
     }
 
