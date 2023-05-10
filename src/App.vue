@@ -71,7 +71,7 @@
   <main>
       <searchbar @ricerca="chiamtaApi()"/>
       <schedaFilm v-if="store.idFilm !== ''"/>
-      <thumbBox v-else/>
+      <thumbBox/>
   </main>
 </template>
 
@@ -83,5 +83,7 @@
     width: 100%;
     background-color: $grey;
     overflow: auto;
-  } 
+    position: relative;
+  }
+  
 </style>

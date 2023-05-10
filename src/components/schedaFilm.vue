@@ -14,7 +14,6 @@
                 .then ( (res) => {
                     store.elementOnScreen =  res.data
                 })
-                console.log(store.pathAPI + store.pathMovieScheda + store.idFilm + "?" +store.pathKey + store.pathLanguage)
                 console.log(store.elementOnScreen)
             }
         },
@@ -25,8 +24,18 @@
 </script>
 
 <template>
-    <div>
-        ciao
+    <div class="containerScheda">
+
+        
     </div>
 </template>
 
+<style lang="scss" scoped>
+    .containerScheda{
+        background-color: rgba(0, 0, 0, 0.192);
+        height: 100%;
+        width: 100%;
+        z-index: 9999;
+        position: absolute;
+    }
+</style>

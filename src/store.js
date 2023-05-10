@@ -34,7 +34,7 @@ export const store = reactive (
         film: false,
         serie: false,
         idFilm: '',
-        elementOnScreen: [],
+        elementOnScreen: {},
     }   
  
 )
