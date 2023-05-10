@@ -61,6 +61,19 @@
             })
           }
         },
+        chiamataFilm(){
+          store.ArrayGeneriFilm.forEach(element => {
+            let ArrayFilm + element.name
+            store.push(`ArrayFilm${element.name}`)
+
+            axios.get(store.pathAPI + store.pathDiscover + store.pathKey + store.pathLanguage + store.pathPopularity + store.pathGeneri + element.id).then 
+            ( (res)=> {
+              store.push(`ArrayFilm${element.name}`)
+              `store.ArrayFilm${element.name}`= []
+            })
+            
+          });
+        }
         
       },  
     }
