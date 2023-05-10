@@ -43,13 +43,22 @@
                <singolaCard v-for="(element, index) in store.ArrayOnScreenSearched" :elementoArray="element" />  
             </div>
         </div>
-        <div v-for="(element,index) in store.ArrayGeneriTv" :key="index"
+        <div v-for="(element,index) in store.ArrayGeneriFilm" :key="index"
         v-if="store.textSearched == '' && store.film " class="lane">
             <p class="titleCategory">
-                GENERE {{ element.name }}
+                {{ element.name }}
             </p>
             <div class="lineaInterna">
                 <singolaCard v-for="(element, index) in store.ArrayFilmConGeneri[index]" :elementoArray="element" />
+            </div>
+        </div>
+        <div v-for="(element,index) in store.ArrayGeneriTv" :key="index"
+        v-if="store.textSearched == '' && store.serie " class="lane">
+            <p class="titleCategory">
+                {{ element.name }}
+            </p>
+            <div class="lineaInterna">
+                <singolaCard v-for="(element, index) in store.ArrayTvConGeneri[index]" :elementoArray="element" />
             </div>
         </div>
         

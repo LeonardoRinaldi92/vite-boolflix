@@ -23,7 +23,7 @@
       methods: {
         chiamtaApi(){
           if(store.textSearched == ''){
-          axios.get(store.pathAPI + store.pathDiscover + store.pathMovie + store.pathKey + store.pathLanguage + store.pathPopularity + store.pathRegion + store.pathItaly)
+          axios.get(store.pathAPI + store.pathDiscover + store.pathMovie + store.pathKey + store.pathLanguage + store.pathRegion + store.pathItaly)
           .then( (res) =>{
               store.ArrayOnScreenMovie = res.data.results
               console.log("movie", store.ArrayOnScreenMovie)
