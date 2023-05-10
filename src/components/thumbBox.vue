@@ -18,7 +18,7 @@
 
 <template>
     <div class="box">
-        <div v-if="store.textSearched == '' " class="lane">
+        <div v-if="store.textSearched == '' && store.home " class="lane">
             <p class="titleCategory">
                 Scopri i film...
             </p>
@@ -26,7 +26,7 @@
                 <singolaCard v-for="(element, index) in store.ArrayOnScreenMovie" :elementoArray="element" />
             </div>
         </div>
-        <div v-if="store.textSearched == ''" class="lane">
+        <div v-if="store.textSearched == '' && store.home" class="lane">
             <p class="titleCategory">
                 Scopri le serie TV...
             </p>

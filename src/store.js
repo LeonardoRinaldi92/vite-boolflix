@@ -23,6 +23,10 @@ export const store = reactive (
         textSearched: '',
         urlBandiere : "https://www.unknown.nu/flags/images/",
         isSearched: false,
+        search: false,
+        home: true,
+        film: false,
+        serie: false,
     }   
  
 )

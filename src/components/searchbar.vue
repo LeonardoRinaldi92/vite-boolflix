@@ -7,8 +7,36 @@
                 store,
             }
 
+        },
+        methods: {
+            GoHome(){
+                if(!store.home){
+                    store.search = false
+                    store.home = true
+                    store.serie = false
+                    store.film = false
+
+                }
+            },
+            GoSerie(){
+                if(!store.serie){
+                    store.search = false
+                    store.serie = true
+                    store.home = false
+                    store.film = false
+                }
+            },
+            GoFilm(){
+                if(!store.film){
+                    store.search = false
+                    store.film = true
+                    store.home = false
+                    store.serie = false
+                }
+            }
+
+            }
         }
-    }
 
 </script>
 
@@ -19,10 +47,20 @@
 
         </div>
         <div class="search" >
-            <input type="text" placeholder="Cerca qui..." v-model="store.textSearched"  @change="$emit('ricerca')">
-
+            <span :class="store.home  ? 'active' : ''" @click="GoHome"> 
+                Home
+            </span>
+            <span :class="store.serie  ? 'active' : ''" @click="GoSerie">
+                serie tv
+            </span>
+            <span :class="store.film  ? 'active' : ''" @click="GoFilm">
+                film
+            </span>
+            <span v-if="!store.search" @click="store.search = true">
+                cerca
+            </span>
+            <input v-if="store.search" type="text" placeholder="Cerca qui..." v-model="store.textSearched"  @change="$emit('ricerca')">
         </div>
-
     </div>
 </template>
 
@@ -35,13 +73,26 @@
         padding: 50px;
         display: flex;
         align-items: center;
+        justify-content: flex-start;
         .logo {
-            flex-basis: 30%;
+            flex-basis: 10%;
             img{
-                width: 80%;
+                height: 40px;
             } 
         }
         .search {
+            span {
+                color: white;
+                text-transform: capitalize;
+                font-size: 1.2rem;
+                margin-right: 20px;
+                cursor: pointer;
+                opacity: 0.6;
+                &:hover {
+                    opacity: 1;
+                }
+
+            }
             input {
                 height: 50px;
                 border: 0;
@@ -56,6 +107,14 @@
                     outline: none;
             }  
             } 
+        }
+        .category {
+            span {
+                color: white;
+                text-transform:capitalize;
+                font-size: 1.2rem;
+
+            }
         }
     }
 
