@@ -17,6 +17,8 @@
       },
       created() {
         this.chiamtaApi()
+        this.chiamataGeneriFilm()
+        this.chiamataGeneriTv()
       },
       methods: {
         chiamtaApi(){
@@ -40,11 +42,26 @@
           .then( (res) =>{
               store.ArrayOnScreenSearched = res.data.results
               console.log(store.ArrayOnScreenSearched)
-
           })
-
         }
-        }
+        },
+        chiamataGeneriFilm(){
+          if (store.film){
+            axios.get(store.pathChiamataGeneriFilm).then ( (res)=>{
+              store.ArrayGeneriFilm = res.data.genres
+              console.log(store.ArrayGeneriFilm)
+            })
+          }
+        },
+        chiamataGeneriTv(){
+          if (store.film){
+            axios.get(store.pathChiamataGeneriFilm).then ( (res)=>{
+              store.ArrayGeneriTv = res.data.genres
+              console.log(store.ArrayGeneriTv)
+            })
+          }
+        },
+        
       },  
     }
 

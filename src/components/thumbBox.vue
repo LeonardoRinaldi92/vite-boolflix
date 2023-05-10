@@ -42,6 +42,7 @@
                <singolaCard v-for="(element, index) in store.ArrayOnScreenSearched" :elementoArray="element" />  
             </div>
         </div>
+        
     </div>
 </template>
 
