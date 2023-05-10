@@ -72,7 +72,7 @@
         height: 80vh;
         width: 100%;
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
         .lane {
             padding: 0px 50px 50px 50px;
             .titleCategory{

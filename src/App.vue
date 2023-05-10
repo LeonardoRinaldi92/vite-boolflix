@@ -61,6 +61,7 @@
 
         },
         
+        
     
       },  
     }
@@ -71,7 +72,7 @@
   <main>
       <searchbar @ricerca="chiamtaApi()"/>
       <schedaFilm v-if="store.idFilm !== ''"/>
-      <thumbBox/>
+      <thumbBox v-else/>
   </main>
 </template>
 
