@@ -7,12 +7,12 @@
             return {
                 store
             }    
-        }
+        },
     }
 </script>
 
 <template>
-    <div v-if="elementoArray.poster_path" class="boxcard">
+    <div v-if="elementoArray.poster_path" class="boxcard" >
         <div v-if="elementoArray.media_type && elementoArray.media_type == 'movie' " class="movietype">
             FILM
         </div>
@@ -20,7 +20,7 @@
             SERIE
         </div>
         <img :src="store.pathImageBig+elementoArray.poster_path" alt="">
-        <div class="descrizione">
+        <div class="descrizione" @click="store.idFilm = elementoArray.id">
             <div>
                 <p v-if="elementoArray.name">
                     <b>TITOLO:</b> <br>

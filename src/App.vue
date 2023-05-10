@@ -2,6 +2,7 @@
         import axios from 'axios';
     import searchbar from './components/searchbar.vue';
     import thumbBox from './components/thumbBox.vue';
+    import schedaFilm from './components/schedaFilm.vue';
     import { store } from './store';
     
     export default {
@@ -14,6 +15,7 @@
       components: {
         searchbar,
         thumbBox,
+        schedaFilm,
       },
       created() {
         this.chiamtaApi()
@@ -58,6 +60,7 @@
             })
 
         },
+        
     
       },  
     }
@@ -67,7 +70,8 @@
 <template>
   <main>
       <searchbar @ricerca="chiamtaApi()"/>
-      <thumbBox/>
+      <schedaFilm v-if="store.idFilm !== ''"/>
+      <thumbBox v-else/>
   </main>
 </template>
 
