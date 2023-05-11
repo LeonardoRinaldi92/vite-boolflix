@@ -93,10 +93,10 @@
                         </h3>
                         <!-- v-if="store.actorsOnScreen.length" -->
                         <div v-if=" store.typeId == 'movie'" class="cast">
-                            <span v-for="index in 5" :key="index">
-                                {{ store.actorsOnScreen.cast[index].name }} 
+                            <span v-for="n in 5" :key="index">
+                                {{ store.actorsOnScreen.cast[n].name }} 
                                 <i>nel ruolo di:</i> 
-                                {{ store.actorsOnScreen.cast[index].character }}
+                                {{ store.actorsOnScreen.cast[n].character }}
                             </span>
                         </div>
 

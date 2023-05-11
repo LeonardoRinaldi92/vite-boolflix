@@ -21,8 +21,48 @@
                     store.typeId = 'tv'
                     console.log('altro')
                 }
-
-
+            },
+            voto() {
+                return Math.ceil(this.elementoArray.vote_average / 2)
+            },
+            titolo() {
+                if (this.elementoArray.name) {
+                    return this.elementoArray.name
+                } else {
+                    return this.elementoArray.title
+                }
+            },
+            titoloOriginale() {
+                if (this.elementoArray.original_name) {
+                    return this.elementoArray.original_name
+                } else {
+                    return this.elementoArray.original_title
+                }
+            },
+            bandiera(){
+                let bandiera = this.elementoArray.original_language
+                if (bandiera == 'en' || bandiera == 'uk' || bandiera == 'he') {
+                    bandiera = 'gb'
+                }
+                else if (bandiera == 'ja'){
+                    bandiera = 'jp'
+                }
+                else if (bandiera == 'da'){
+                    bandiera = 'dk'
+                }
+                else if (bandiera == 'cs'){
+                    bandiera = 'cz'
+                }
+                else if (bandiera =='hi'){
+                    bandiera = 'in'
+                }
+                else if (bandiera == 'zh'){
+                    bandiera = 'tw'
+                }
+                else if ( bandiera == 'ko'){
+                    bandiera = 'kr'
+                }
+                return "https://flagcdn.com/w20/" + bandiera +".jpg"
             }
         }
     }
@@ -39,70 +79,23 @@
         <img :src="store.pathImageBig+elementoArray.poster_path" alt="">
         <div class="descrizione" @click="checkType">
             <div>
-                <p v-if="elementoArray.name">
+                <p>
                     <b>TITOLO:</b> <br>
-                    {{ elementoArray.name }}
+                    {{ titolo() }}
                 </p>
-                <p v-else>
-                    <b>TITOLO:</b> <br>
-                    {{ elementoArray.title }}
-                </p>
-                <p v-if="elementoArray.original_name">
+                
+                <p v-if="titolo() !== titoloOriginale()">
                     <b>TITOLO ORIGINALE:</b> <br>
-                    {{ elementoArray.original_name }}
-                </p>
-                <p v-else>
-                    <b>TITOLO ORIGINALE:</b> <br>
-                    {{ elementoArray.original_title }}
+                    {{ titoloOriginale()}}
                 </p>
                 <p v-if="elementoArray.original_language">
                     <p>LINGUA ORIGINALE:</p>
-                    <img :src="store.urlBandiere+elementoArray.original_language+-100" alt="">
+                    <img :src="bandiera()" alt="">
                 </p>     
                 <p class="voto">
                     <b>VOTO :</b>
-                    <span v-if="elementoArray.vote_average > 8">
-                        <span style="color: gold;">&#9733;</span>
-                        <span style="color: gold;">&#9733;</span>
-                        <span style="color: gold;">&#9733;</span>
-                        <span style="color: gold;">&#9733;</span>
-                        <span style="color: gold;">&#9733;</span>
-                    </span>
-                   <span v-else-if="elementoArray.vote_average > 6">
-                        <span style="color: gold;">&#9733;</span>
-                        <span style="color: gold;">&#9733;</span>
-                        <span style="color: gold;">&#9733;</span>
-                        <span style="color: gold;">&#9733;</span>
-                        <span>&#9733;</span>
-                    </span>
-                    <span v-else-if="elementoArray.vote_average > 4">
-                        <span style="color: gold;">&#9733;</span>
-                        <span style="color: gold;">&#9733;</span>
-                        <span style="color: gold;">&#9733;</span>
-                        <span>&#9733;</span>
-                        <span>&#9733;</span>
-                    </span>
-                    <span v-else-if="elementoArray.vote_average > 4">
-                        <span style="color: gold;">&#9733;</span>
-                        <span style="color: gold;">&#9733;</span>
-                        <span>&#9733;</span>
-                        <span>&#9733;</span>
-                        <span>&#9733;</span>
-                    </span>
-                    <span v-else-if="elementoArray.vote_average > 2">
-                        <span>{{ elementoArray.vote_average }}</span>
-                        <span style="color: gold;">&#9733;</span>
-                        <span>&#9733;</span>
-                        <span>&#9733;</span>
-                        <span>&#9733;</span>
-                        <span>&#9733;</span>
-                    </span>
-                    <span v-else>
-                        <span>&#9733;</span>
-                        <span>&#9733;</span>
-                        <span>&#9733;</span>
-                        <span>&#9733;</span>
-                        <span>&#9733;</span>
+                    <span v-for="n in 5" :style="(n <= voto()) ? 'color: gold;':'' ">
+                        &#9733;
                     </span>
                 </p>
             </div>   
@@ -159,7 +152,7 @@
                 p {
                     font-size: 0.8rem;
                     margin-top: 10px;
-                    line-height: 0.6rem;
+                    line-height: 0.8rem;
 
                 }
                 img {
