@@ -8,6 +8,23 @@
                 store
             }    
         },
+        methods: {
+            checkType() {
+                if (this.elementoArray.media_type == 'movie' || this.elementoArray.original_title )
+                {
+                    store.idFilm = this.elementoArray.id
+                    store.typeId = 'movie'
+                    console.log("ciao")
+                } else {
+
+                    store.idFilm = this.elementoArray.id
+                    store.typeId = 'tv'
+                    console.log('altro')
+                }
+
+
+            }
+        }
     }
 </script>
 
@@ -20,7 +37,7 @@
             SERIE
         </div>
         <img :src="store.pathImageBig+elementoArray.poster_path" alt="">
-        <div class="descrizione" @click="store.idFilm = elementoArray.id">
+        <div class="descrizione" @click="checkType">
             <div>
                 <p v-if="elementoArray.name">
                     <b>TITOLO:</b> <br>

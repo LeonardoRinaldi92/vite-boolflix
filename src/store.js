@@ -8,6 +8,7 @@ export const store = reactive (
         pathMulti : 'multi?',
         pathMovie : 'movie?',
         pathMovieScheda: 'movie/',
+        pathTvScheda: 'tv/',
         pathTV: 'tv?',
         pathKey : 'api_key=553a5f7d4578dcd45e775fe2ac050910',
         pathPopularity: '&sort_by=popularity.desc',
@@ -34,6 +35,7 @@ export const store = reactive (
         film: false,
         serie: false,
         idFilm: '',
+        typeId: '',
         elementOnScreen: {},
         actorsOnScreen: [],
     }   

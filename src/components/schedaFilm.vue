@@ -10,15 +10,28 @@
         },
         methods: {
             chiamataFilm(){
-                axios.get(store.pathAPI + store.pathMovieScheda + store.idFilm + "?" +store.pathKey + store.pathLanguage)
-                .then ( (res) => {
-                    store.elementOnScreen =  res.data
-                })
-                axios.get(store.pathAPI + store.pathMovieScheda + store.idFilm + "/casts?" + store.pathKey )
-                .then ( (res) => {
-                    store.actorsOnScreen = res.data
-                    console.log(store.actorsOnScreen)
-                })
+                if (store.typeId == 'movie'){
+                    axios.get(store.pathAPI + store.pathMovieScheda + store.idFilm + "?" +store.pathKey + store.pathLanguage)
+                    .then ( (res) => {
+                        store.elementOnScreen =  res.data
+                    })
+                    axios.get(store.pathAPI + store.pathMovieScheda + store.idFilm + "/casts?" + store.pathKey )
+                    .then ( (res) => {
+                        store.actorsOnScreen = res.data
+                        console.log(store.actorsOnScreen)
+                    })
+                } else {
+                    axios.get(store.pathAPI + store.pathTvScheda + store.idFilm + "?" +store.pathKey + store.pathLanguage)
+                    .then ( (res) => {
+                        store.elementOnScreen =  res.data
+                    })
+                    // axios.get(store.pathAPI + store.pathTvScheda + store.idFilm + "/credits?" + store.pathKey )
+                    // .then ( (res) => {
+                    //     store.actorsOnScreen = res.data
+                    //     console.log(store.actorsOnScreen)
+                    // })
+
+                }
             },
             
         },
@@ -35,8 +48,11 @@
             <div class="box-interno">
                 <div class="struttura">
                     <div>
-                        <h1>
+                        <h1 v-if="store.elementOnScreen.title">
                             {{ store.elementOnScreen.title }}
+                        </h1>
+                        <h1 v-else>
+                            {{ store.elementOnScreen.name }}
                         </h1>
                         <h3 v-if="store.elementOnScreen.tagline" class="tagline">
                             <i>"{{ store.elementOnScreen.tagline }}"</i>
