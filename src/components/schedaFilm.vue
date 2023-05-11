@@ -25,11 +25,12 @@
                     .then ( (res) => {
                         store.elementOnScreen =  res.data
                     })
-                    // axios.get(store.pathAPI + store.pathTvScheda + store.idFilm + "/credits?" + store.pathKey )
-                    // .then ( (res) => {
-                    //     store.actorsOnScreen = res.data
-                    //     console.log(store.actorsOnScreen)
-                    // })
+                    console.log(store.pathAPI + store.pathTvScheda + store.idFilm + "/credits?" + store.pathKey)
+                    axios.get(store.pathAPI + store.pathTvScheda + store.idFilm + "/credits?" + store.pathKey )
+                    .then ( (res) => {
+                        store.actorsOnScreen = res.data
+                        console.log(store.actorsOnScreen)
+                    })
 
                 }
             },
@@ -86,17 +87,19 @@
                                 {{ element.name }}
                             </span>
                         </div>
-                        <h3 div v-if="store.actorsOnScreen.length">
+                        <!-- v-if="store.actorsOnScreen.length" -->
+                        <h3 v-if=" store.typeId == 'movie'">
                             Cast:
                         </h3>
-                        <div v-if="store.actorsOnScreen.length" class="cast">
+                        <!-- v-if="store.actorsOnScreen.length" -->
+                        <div v-if=" store.typeId == 'movie'" class="cast">
                             <span v-for="index in 5" :key="index">
                                 {{ store.actorsOnScreen.cast[index].name }} 
                                 <i>nel ruolo di:</i> 
                                 {{ store.actorsOnScreen.cast[index].character }}
                             </span>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>

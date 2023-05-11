@@ -38,6 +38,7 @@ export const store = reactive (
         typeId: '',
         elementOnScreen: {},
         actorsOnScreen: [],
+        actorsLength: '',
     }   
  
 )
