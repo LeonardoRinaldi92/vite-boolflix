@@ -57,14 +57,23 @@
                         <h3 v-if="store.elementOnScreen.tagline" class="tagline">
                             <i>"{{ store.elementOnScreen.tagline }}"</i>
                         </h3>
-                        <h3>
+                        <h3 v-if="store.elementOnScreen.original_title && store.elementOnScreen.original_title !== store.elementOnScreen.title">
                             Titolo originale : {{ store.elementOnScreen.original_title }}
+                        </h3>
+                        <h3 v-else-if="store.elementOnScreen.original_name && store.elementOnScreen.name !== store.elementOnScreen.original_name">
+                            Titolo originale : {{ store.elementOnScreen.original_name }}
                         </h3>
                         <p>
                             {{ store.elementOnScreen.overview }}
                         </p>
-                        <h3>
+                        <h3 v-if="store.elementOnScreen.runtime">
                             Durata: {{ store.elementOnScreen.runtime }} min.
+                        </h3>
+                        <h3>
+                            
+                        </h3>
+                        <h3 v-if="store.elementOnScreen.episode_run_time">
+                            Duarata episodi : {{ store.elementOnScreen.episode_run_time[0] }} min.
                         </h3>
                         <h3>
                             Genere:
@@ -74,10 +83,10 @@
                                 {{ element.name }}
                             </span>
                         </div>
-                        <h3>
+                        <h3 div v-if="store.actorsOnScreen.length">
                             Cast:
                         </h3>
-                        <div class="cast">
+                        <div v-if="store.actorsOnScreen.length" class="cast">
                             <span v-for="index in 5" :key="index">
                                 {{ store.actorsOnScreen.cast[index].name }} 
                                 <i>nel ruolo di:</i> 
