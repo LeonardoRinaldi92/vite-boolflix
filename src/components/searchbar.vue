@@ -81,7 +81,7 @@
 <template>
     <div>
         <div class="logo">
-            <img src="https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png" alt="">
+            <img src="https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png" alt="" @click="GoHome">
 
         </div>
         <div class="search" >
@@ -116,6 +116,7 @@
             flex-basis: 10%;
             img{
                 height: 40px;
+                cursor: pointer;
             } 
         }
         .search {

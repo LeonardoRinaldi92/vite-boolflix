@@ -25,16 +25,35 @@
                     .then ( (res) => {
                         store.elementOnScreen =  res.data
                     })
-                    console.log(store.pathAPI + store.pathTvScheda + store.idFilm + "/credits?" + store.pathKey)
-                    axios.get(store.pathAPI + store.pathTvScheda + store.idFilm + "/credits?" + store.pathKey )
-                    .then ( (res) => {
-                        store.actorsOnScreen = res.data
-                        console.log(store.actorsOnScreen)
-                    })
-
+                    // console.log(store.pathAPI + store.pathTvScheda + store.idFilm + "/credits?" + store.pathKey)
+                    // axios.get(store.pathAPI + store.pathTvScheda + store.idFilm + "/credits?" + store.pathKey )
+                    // .then ( (res) => {
+                    //     store.actorsOnScreen = res.data
+                    //     console.log(store.actorsOnScreen)
+                    // })
                 }
             },
-            
+            titolo(){
+                if(store.elementOnScreen.title){
+                    return store.elementOnScreen.title
+                }else {
+                    return store.elementOnScreen.name
+                }
+            },
+            titoloOriginale(){
+                if(store.elementOnScreen.original_title){
+                    return store.elementOnScreen.original_title
+                }else {
+                    return store.elementOnScreen.original_name
+                }
+            },
+            dataMessaInOnda(){
+                if(store.elementOnScreen.first_air_date){
+                    return store.elementOnScreen.first_air_date.split("-").reverse().join('/')
+                }else if(store.elementOnScreen.release_date) {
+                    return store.elementOnScreen.release_date.split("-").reverse().slice(2).join()
+                }
+            }
         },
         created() {
             this.chiamataFilm()
@@ -49,20 +68,17 @@
             <div class="box-interno">
                 <div class="struttura">
                     <div>
-                        <h1 v-if="store.elementOnScreen.title">
-                            {{ store.elementOnScreen.title }}
-                        </h1>
-                        <h1 v-else>
-                            {{ store.elementOnScreen.name }}
+                        <h1>
+                            {{ titolo() }}
                         </h1>
                         <h3 v-if="store.elementOnScreen.tagline" class="tagline">
                             <i>"{{ store.elementOnScreen.tagline }}"</i>
                         </h3>
-                        <h3 v-if="store.elementOnScreen.original_title && store.elementOnScreen.original_title !== store.elementOnScreen.title">
-                            Titolo originale : {{ store.elementOnScreen.original_title }}
+                        <h3 v-if="titoloOriginale() !== titolo()">
+                            Titolo originale : {{ titoloOriginale() }}
                         </h3>
-                        <h3 v-else-if="store.elementOnScreen.original_name && store.elementOnScreen.name !== store.elementOnScreen.original_name">
-                            Titolo originale : {{ store.elementOnScreen.original_name }}
+                        <h3 v-if="store.elementOnScreen.release_date">
+                            Anno: {{ dataMessaInOnda()}}
                         </h3>
                         <p>
                             {{ store.elementOnScreen.overview }}
@@ -76,7 +92,7 @@
                         <h3 v-if="store.elementOnScreen.number_of_episodes">
                             Epidosi totali: {{ store.elementOnScreen.number_of_episodes }}
                         </h3>
-                        <h3 v-if="store.elementOnScreen.episode_run_time">
+                        <h3 v-if="store.elementOnScreen.episode_run_time && store.elementOnScreen.episode_run_time.length">
                             Duarata episodi : {{ store.elementOnScreen.episode_run_time[0] }} min.
                         </h3>
                         <h3>
@@ -87,11 +103,9 @@
                                 {{ element.name }}
                             </span>
                         </div>
-                        <!-- v-if="store.actorsOnScreen.length" -->
                         <h3 v-if=" store.typeId == 'movie'">
                             Cast:
                         </h3>
-                        <!-- v-if="store.actorsOnScreen.length" -->
                         <div v-if=" store.typeId == 'movie'" class="cast">
                             <span v-for="n in 5" :key="index">
                                 {{ store.actorsOnScreen.cast[n].name }} 
@@ -99,7 +113,9 @@
                                 {{ store.actorsOnScreen.cast[n].character }}
                             </span>
                         </div>
-
+                        <h3 v-if="store.elementOnScreen.first_air_date">
+                            Data prima messa in onda: {{ dataMessaInOnda() }}
+                        </h3>
                     </div>
                 </div>
             </div>
