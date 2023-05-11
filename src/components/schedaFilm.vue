@@ -69,8 +69,11 @@
                         <h3 v-if="store.elementOnScreen.runtime">
                             Durata: {{ store.elementOnScreen.runtime }} min.
                         </h3>
-                        <h3>
-                            
+                        <h3 v-if="store.elementOnScreen.number_of_seasons">
+                            Stagioni: {{ store.elementOnScreen.number_of_seasons }}
+                        </h3>
+                        <h3 v-if="store.elementOnScreen.number_of_episodes">
+                            Epidosi totali: {{ store.elementOnScreen.number_of_episodes }}
                         </h3>
                         <h3 v-if="store.elementOnScreen.episode_run_time">
                             Duarata episodi : {{ store.elementOnScreen.episode_run_time[0] }} min.
